@@ -67,6 +67,12 @@ class Storage(object):
 
         return response.is_success
 
+    def clearValueExpense(self, chat_id: int, user_name: str, expense: str):
+        message = pb2.UserExpense(user=pb2.User(name=user_name, chat_id=chat_id),
+                                  expense=pb2.Expense(name=expense, value=0.0))
+        response = self.stub.setExpense(message)
+        return response.is_success
+
     def addValueBalance(self, chat_id: int, user_name: str, value: float) -> bool:
         message = pb2.Money(user=pb2.User(chat_id=chat_id, name=user_name),
                             value=value)

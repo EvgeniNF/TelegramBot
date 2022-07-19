@@ -11,7 +11,7 @@ def create_keyboard_from_expenses(storage_client: Storage, chat_id: int, user_na
     markup = types.InlineKeyboardMarkup()
 
     for name_expense in expenses.keys():
-        button = types.InlineKeyboardButton(f"{name_expense}: {expenses[name_expense]}",
+        button = types.InlineKeyboardButton(f"{name_expense}: {round(expenses[name_expense], 2)}",
                                             callback_data=f"{prefix}:{name_expense}")
         markup.add(button)
 

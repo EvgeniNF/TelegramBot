@@ -141,8 +141,8 @@ def callback_worker(call):
             bot.send_message(call.message.chat.id, "Не возможно получить доступ к расходам")
         else:
             for key in expenses:
-                result = client_storage.addValueExpense(call.message.chat.id, call.message.chat.username,
-                                               key, -expenses[key])
+                result = client_storage.clearValueExpense(call.message.chat.id, call.message.chat.username,
+                                               key)
 
                 if not result:
                     bot.send_message(call.message.chat.id, f"Не возможно обнулить расход {key}")
