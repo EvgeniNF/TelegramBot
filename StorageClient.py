@@ -67,9 +67,9 @@ class Storage(object):
 
         return response.is_success
 
-    def clearValueExpense(self, chat_id: int, user_name: str, expense: str):
+    def clearValueExpense(self, chat_id: int, user_name: str, expense: str, value: float):
         message = pb2.UserExpense(user=pb2.User(name=user_name, chat_id=chat_id),
-                                  expense=pb2.Expense(name=expense, value=0.0))
+                                  expense=pb2.Expense(name=expense, value=value))
         response = self.stub.setExpense(message)
         return response.is_success
 
